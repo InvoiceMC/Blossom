@@ -1,0 +1,4 @@
+name: Blossom
+version: '${version}'
+main: me.outspending.blossom.Blossom
+api-version: '1.20'
