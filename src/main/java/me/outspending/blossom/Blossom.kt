@@ -7,6 +7,6 @@ class Blossom : JavaPlugin() {
     }
 
     override fun onDisable() {
-        
+
     }
 }

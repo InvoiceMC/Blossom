@@ -2,6 +2,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("co.uzzu.dotenv.gradle") version "4.0.0"
     kotlin("jvm")
+    `maven-publish`
     java
 }
 
@@ -19,7 +20,20 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+}
+
 tasks {
+    wrapper {
+        gradleVersion = "8.6"
+        distributionType = Wrapper.DistributionType.ALL
+    }
+
     shadowJar {
         if (!env.isPresent("DESTINATION")) {
             throw IllegalArgumentException("DESTINATION environment variable is not set")
